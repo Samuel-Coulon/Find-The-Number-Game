@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Game</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@3.4.9/dist/vue.global.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Find The Number</h1>
+    </header>
+
+    <section id="find_the_number_game">
+      <h2>Attempt: {{attempts}}</h2>
+
+      <button @click="add(2)" :disabled="has_won">Add 2</button>
+      <button @click="add(10)" :disabled="has_won">Add 10</button>
+      <button @click="sub(1)" :disabled="has_won">Subtract 1</button>
+      <button @click="sub(7)" :disabled="has_won">Subtract 7</button>
+      <p>{{ hidden_number }}</p>
+      <p>{{guess}}</p>
+      <button v-if="guess === random_number" @click="resetGame">
+        Play Again
+      </button>
+    </section>
+    <section id="instructions">
+      <h3>How To Play</h3>
+      <p>
+        When the game starts there will be a hidden number randomized between
+        -50 to 50
+      </p>
+      <p>The goal of the game is to find the random number within 10 seconds</p>
+      <p>
+        If you do not find the number in time it will automatically re-select a
+        new number
+      </p>
+    </section>
+  </body>
+</html>
